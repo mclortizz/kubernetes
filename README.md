@@ -9,3 +9,6 @@ __Para entrar em contato:__ https://www.linkedin.com/in/marcelo-ortiz-da-silva-2
 __Para acessar meus artigos no medium:__ https://medium.com/@mclortizz
 
 ## Instalando o Kubernetes na AWS (rodando o Debian como SO)
+Siga os passos do link:
+
+https://github.com/mclsylva/kubernetes/blob/main/Instalando_Kubernetes
