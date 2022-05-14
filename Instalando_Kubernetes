@@ -1,4 +1,4 @@
-##Instalando o Kuberentes na AWS (com instâncias rodando o sistema operacional Debian)
+## Instalando o Kuberentes na AWS (com instâncias rodando o sistema operacional Debian)
 
 Você pode acompanhar o passo a passo desse procedimento no vídeo abaixo:
 
@@ -12,7 +12,7 @@ Vamos quebrar a instalação em 5 seções:
 4 - Instalando o Kubernetes
 5 - Subindo alguns pods para testar
 
-#Subindo as instâncias
+# Subindo as instâncias
 Nessa seção não vou colocar o passo a passo, pois é mais fácil acompanhar pelos vídeos. Mas em suma:
 * Vamos subir 3 instâncias na AWS com o sistema operacional Debian
 
