@@ -1,0 +1,112 @@
+## Instalando o Kuberentes na AWS (com instâncias rodando o sistema operacional Debian)
+
+Você pode acompanhar o passo a passo desse procedimento no vídeo abaixo:
+
+__link do vídeo__
+
+Vamos quebrar a instalação em 5 seções:
+
+1 - Subindo as instâncias na AWS e configurando o security group
+2 - Configurando o sistema operacional
+3 - Instalando o Docker
+4 - Instalando o Kubernetes
+5 - Subindo alguns pods para testar
+
+## Subindo as instâncias
+Nessa seção não vou colocar o passo a passo, pois é mais fácil acompanhar pelos vídeos. Mas em suma:
+* Vamos subir 3 instâncias na AWS com o sistema operacional Debian (type 2);
+* E vamos configurar o secutiry group para as instâncias se comunicarem entre sim.
+
+## Configurando o SO
+Assim que subir as instâncias, conecte nos servidores com o terminal de sua preferência e execute:
+
+1 - Altere o nome das instâncias, para ficar fácil entender onde você está via prompt de comando:
+a) Na master:
+$ sudo su -
+$ hostname k8s-master
+$ echo k8s-master > /etc/hostname
+$ bash
+
+b) No worker 01:
+$ sudo su -
+$ hostname k8s-worker-01
+$ echo k8s-worker-01 > /etc/hostname
+$ bash
+
+c) No worker 02:
+$ sudo su -
+$ hostname k8s-worker-02
+$ echo k8s-worker-02 > /etc/hostname
+$ bash
+
+2 - Faça o update do sistema operacional nas 3 instâncias:
+$ apt-get update
+
+## Instalando o Docker
+3 - Instale o Docker nas 3 instâncias
+$ curl -fsSL https://get.docker.com | bash
+
+4 - Teste se o Docker está ok nas 3 instâncias
+$ docker version
+$ docker container ls
+
+5 - Configure o driver cgroup nas 3 instâncias
+$ cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+
+6 - Crie o diretório nas 3 instâncias
+$ mkdir -p /etc/systemd/system/docker.service.d
+
+7 - Reinicie o docker nas 3 instâncias
+$ systemctl daemon-reload
+$ systemctl restart docker
+
+## Instalando o Kubernetes
+O site de instalação do Kubernetes é: https://kubernetes.io/pt-br/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+8 - Faça o update do sistema operacional nas 3 instâncias
+$ sudo apt-get update
+
+9 - Instale os módulos necessários para o Kubernetes funcionar (normalmente todos eles já estão instalados, mas não custar certificar) nas 3 instâncias
+$ sudo apt-get install -y apt-transport-https ca-certificates curl
+
+10 - Faça o download da assinatura pública do Google nas 3 instâncias
+$ sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+11 - Adicione o repositório apt do Kubernetes nas 3 instâncias
+$ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+12 - Atualize e instale os pacotes do Kubernetes nas 3 instâncias
+$ sudo apt-get update
+$ sudo apt-get install -y kubelet kubeadm kubectl
+$ sudo apt-mark hold kubelet kubeadm kubectl
+
+13 - Faça o download das imagens dos componentes do Kubernetes, somente na instância MASTER:
+$ kubeadm config images pull
+
+ATENÇÃO: SE DER ERRO NESSE PASSO FAÇA O PROCEDIMENTO ABAIXO NAS 3 INSTÂNCIAS:
+$ rm /etc/containerd/config.toml
+$ systemctl restart containerd
+$ kubeadm config images pull
+
+14 - Inicie o Kubernetes, somente na instância MASTER:
+$ kubeadm init
+
+ATENÇÃO: NÃO ESQUEÇA DE DEIXAR GUARDADO A CHAVE DE CONEXÃO DOS WORKERS COM O MASTER
+
+15 - Crie os diretórios que o Kubernetes solicita, somente na instância MASTER
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+16 - 
+
+
