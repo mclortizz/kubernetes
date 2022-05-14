@@ -107,6 +107,15 @@ $ mkdir -p $HOME/.kube
 $ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-16 - 
+16 - Instale o pod que vai gerenciar a rede, no nosso caso vamos usar o Calico, somente na instância MASTER:
+$ kubectl create -f https://docs.projectcalico.org/manifests/calico.yaml
+
+17 - Adicione os nodes workes, executando nos WORKERS o comando que você guardou no passo 14. É algo do tipo:
+$ kubeadm join 172.31.83.12:6443 --token o7ilzx.3bfmozsp743itdfx \
+        --discovery-token-ca-cert-hash sha256:ffe2688651341e5c7fd6594d40100a42ea2858f1f8ee981169263fb9dc85a72d
+
+18 - Agora é só testar deployando pods do NGINX ou qualquer outro que você quiser:
+$ kubectl run nginx1 --image nginx
+$ kubectl run nginx2 --image nginx
 
 
