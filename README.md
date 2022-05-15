@@ -13,3 +13,5 @@ __Para acessar meus artigos no medium:__ https://medium.com/@mclortizz
 Para instalar o Kubernetes em instâncias da AWS rodando o Debian, siga os passos do link:
 
 https://github.com/mclsylva/kubernetes/blob/main/instalar_kubernetes.md
+
+O vídeo está em: https://youtu.be/7k_LG2Rk8PU
