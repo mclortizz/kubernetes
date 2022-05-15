@@ -2,7 +2,7 @@
 
 Você pode acompanhar o passo a passo desse procedimento no vídeo abaixo:
 
-__link do vídeo__
+https://youtu.be/7k_LG2Rk8PU
 
 Vamos quebrar a instalação em 5 seções:
 
