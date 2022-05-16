@@ -8,6 +8,12 @@ __Para entrar em contato:__ https://www.linkedin.com/in/marcelo-ortiz-da-silva-2
 
 __Para acessar meus artigos no medium:__ https://medium.com/@mclortizz
 
+## Entendendo a arquitetura do Kubernetes
+
+Entenda a arquitetura básica do Kubernetes, o que é Master, o que é Worker e o que roda em cada um.
+
+https://github.com/mclsylva/kubernetes/blob/main/instalar_kubernetes.md
+
 ## Instalando o Kubernetes na AWS (rodando o Debian como SO)
 
 Para instalar o Kubernetes em instâncias da AWS rodando o Debian, siga os passos do link:
