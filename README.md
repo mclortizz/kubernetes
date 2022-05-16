@@ -8,7 +8,7 @@ __Para entrar em contato:__ https://www.linkedin.com/in/marcelo-ortiz-da-silva-2
 
 __Para acessar meus artigos no medium:__ https://medium.com/@mclortizz
 
-## Entendendo a arquitetura do Kubernetes
+## Entendendo a Arquitetura do Kubernetes
 
 Entenda a arquitetura básica do Kubernetes, o que é Master, o que é Worker e o que roda em cada um.
 
