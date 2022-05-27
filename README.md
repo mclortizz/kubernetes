@@ -16,8 +16,12 @@ https://github.com/mclsylva/kubernetes/blob/main/instalar_kubernetes.md
 
 ## Instalando o Kubernetes na AWS (rodando o Debian como SO)
 
-Para instalar o Kubernetes em instâncias da AWS rodando o Debian, siga os passos do link:
+[Passo a Passo](https://github.com/mclsylva/kubernetes/blob/main/instalar_kubernetes.md)
 
-https://github.com/mclsylva/kubernetes/blob/main/instalar_kubernetes.md
+[Vídeo explicando a instalação](https://youtu.be/7k_LG2Rk8PU)
 
-O vídeo está em: https://youtu.be/7k_LG2Rk8PU
+## Instalando Prometheus e Grafana no ambiente AWS + k8s
+
+[Passo a Passo](https://github.com/mclsylva/kubernetes/blob/main/instalar_prometheus_grafana)
+
+[Vídeo explicando a instalação](https://youtu.be/yvxtI75i21U)
