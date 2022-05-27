@@ -1,0 +1,45 @@
+1 - Prepare o ambiente na AWS com Kubernetes (veja o vídeo https://youtu.be/7k_LG2Rk8PU)
+
+2 - Instale o Helm na sua instância master:
+
+2.1 - Baixe o Helm
+curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+
+2.2 - Instale os pacotes obrigatórios
+sudo apt-get install apt-transport-https --yes
+
+2.3 - Baixe as chaves do repositório
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+
+2.4 - Atualize os repositórios
+sudo apt-get update
+
+2.5 - Instale o Helm
+sudo apt-get install helm
+
+3 - Instale o Prometheus e o Grafana:
+
+3.1 - Baixe o repositório do Grafana
+helm repo add stable https://charts.helm.sh/stable
+
+3.2 - Baixe o repositório do Prometheus
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+3.3 - Instale o Prometheus e Grafana
+helm install stable prometheus-community/kube-prometheus-stack
+
+3.4 - Edite o serviço do Prometheus no Kubernetes
+kubectl edit svc stable-kube-prometheus-sta-prometheus
+mude o type para NodePort (para salvar o arquivo pressione "esc" e depois :wq)
+
+3.5 - Edite o serviço do Grafana no Kubernetes
+kubectl edit svc stable-grafana
+mude o type para NodePort (para salvar o arquivo pressione "esc" e depois :wq)
+
+4 - Na console de gerenciamento da sua instância EC2, acesse o Security Group da sua instância master e crie duas regras de acesso, uma para o Grafana e outra para o Prometheus (como mostro no vídeo).
+
+5 - Para acessar pela primeira vez o Grafana o login é "admin" e a senha é "prom-operator". Troque essa senha quando fizer seu primeiro acesso.
+
+6 - E por fim, configure o data source do Grafana (como mostro no vídeo).
+
+7 - Para acessar o Prometheus ou o Grafana basta você colar o IP público da sua instância master com a porta que você liberou no Security Group (como mostro no vídeo).
