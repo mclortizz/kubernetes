@@ -25,3 +25,17 @@ https://github.com/mclsylva/kubernetes/blob/main/instalar_kubernetes.md
 [Passo a Passo](https://github.com/mclsylva/kubernetes/blob/main/instalar_prometheus_grafana)
 
 [Vídeo explicando a instalação](https://youtu.be/yvxtI75i21U)
+
+## Escalabilidade - Horizontal Pod Autoscaler e Vertical Pod Autoscaler
+
+[Passo a Passo Horizontal Pod Autoscaler](https://github.com/mclortizz/kubernetes/blob/main/Escalabilidade/HPA.pdf)
+
+[Passo a Passo Vertical Pod Autoscaler](https://github.com/mclortizz/kubernetes/blob/main/Escalabilidade/VPA.pdf)
+
+[Arquivo YAML do deploy do NGINX](https://github.com/mclortizz/kubernetes/blob/main/Escalabilidade/deploy.yaml)
+
+[Arquivo YAML da configuração do HPA](https://github.com/mclortizz/kubernetes/blob/main/Escalabilidade/hpa.yaml)
+
+[Arquivo YAML da configuração do VPA](https://github.com/mclortizz/kubernetes/blob/main/Escalabilidade/vpa.yaml)
+
+[Vídeo explicando a instalação](https://youtu.be/yvxtI75i21U)
