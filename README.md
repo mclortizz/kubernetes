@@ -38,4 +38,4 @@ https://github.com/mclsylva/kubernetes/blob/main/instalar_kubernetes.md
 
 [Arquivo YAML da configuração do VPA](https://github.com/mclortizz/kubernetes/blob/main/Escalabilidade/vpa.yaml)
 
-[Vídeo explicando como isso funciona](https://youtu.be/Bc-nVILcla4)
+[Vídeo explicando como isso funciona](https://youtu.be/iIH9ojSPuQs)
